@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block content %}
+
+<div class="container">
+
+<div class="container cards">
+  {% for container in containers %}
+    <div class="card">
+      <img src="{% static container.image %}" alt="{{ container.name }}" />
+      <h2>{{ container.name }}</h2>
+      <p>{{ container.description }}</p>
+      <p>Стоимость: {{ container.price }}</p>
+      <button> 
+        <a href="{% url 'transport:cont' container.id %}">Перейти</a>
+      </button>
+    </div>
+  {% endfor %}
+</div>
+
+<div class="order">
+  <h1>Заказы</h1>
+  {% for order_id, order in collected_cart.items %}
+  <div>
+    <h3><a href="{% url 'transport:order' order_id %}">Заказ {{ order_id }}</a></h3>
+    {% for container in order.containers %}
+      <li><a href="{% url 'transport:cont' container.id %}">{{  container.name }}</a>- {{ container.price }}</li>
+    {% endfor %}
+    <p>Итого: {{ order.total_price }} ({{ order.count }} шт.)</p>
+  </div>  
+  {% endfor %}
+</div>
+
+<div class="search">
+  <h1>Поиск</h1>
+  <form actio="{% url 'transport:index' %}">
+    <input name="search" value="{{ search_value }}" />
+    <button type="submit">Поиск</button>
+  </form>
+</div>
+
+</div>
+
+{% endblock %}

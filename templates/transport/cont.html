@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="cont-detail">
+  <img src="{% static container_info.image %}" alt="{{ container_info.name }}" />
+  <h2>{{ container_info.name }}</h2>
+  <p>Описание: {{ container_info.description }}</p>
+  <p>Стоимость: {{ container_info.price }}</p>
+</div>
+{% endblock %}

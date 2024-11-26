@@ -1,0 +1,40 @@
+h1 {
+    color: #f15f2c;
+}
+
+.container {
+    display: flex; 
+    flex-wrap: wrap;
+}
+
+.cards {
+    width: 70%;
+}
+
+.order {
+    width: 15%;
+}
+
+.search {
+    width: 15%;
+}
+
+.cards img {
+    width: 50%;
+}
+
+.cont-detail img {
+    width: 500px;
+}
+
+.order-detail img {
+    width: 300px;
+}
+
+.card {
+    width: 25%;
+    border-color: #f15f2c;
+    border-radius: 8px;
+    border-width: 10px;
+
+}

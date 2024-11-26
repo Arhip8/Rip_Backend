@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="order-detail">
+  <div>
+    <h3>{{ title }}. Стоимость: {{ order.total_price }}. Количество: {{ order.count }} шт.</h3>
+    {% for container in order.containers %}
+      <div class="card">
+        <img src="{% static container.image %}" alt="{{ container.name }}" />
+        <h2>{{ container.name }}</h2>
+        <p>{{ container.description }}</p>
+        <p>Стоимость: {{ container.price }}</p>
+        <button> 
+          <a href="{% url 'transport:cont' container.id %}">Перейти</a>
+        </button>
+      </div>
+    {% endfor %}
+  </div>  
+</div>
+{% endblock %}
